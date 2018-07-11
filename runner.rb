@@ -1,9 +1,13 @@
 require "unirest"
 
-response = Unirest.get("http://localhost:3000/api/all_products")
+response = Unirest.post("localhost:3000/api/products",
+  parameters: {
+    input_name: ,
+    input_price: ,
+    input_image_url: ,
+    input_description:
 
-p response
 
-response = Unirest.get("http://localhost:3000/api/first_product")
 
-p response
+  }
+)

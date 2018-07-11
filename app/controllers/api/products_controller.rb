@@ -1,6 +1,11 @@
 class Api::ProductsController < ApplicationController
-  def the_products
+  def index
     @products = Product.all
-    render "products.json.jbuilder"
+    render "index.json.jbuilder"
+  end
+
+  def first_product
+    @product = Product.first
+    render "first_product.json.jbuilder"
   end
 end

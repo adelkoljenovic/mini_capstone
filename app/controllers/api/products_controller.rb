@@ -1,6 +1,9 @@
 class Api::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    # @products = Product.all
+    # render "index.json.jbuilder"
+    search_term = params[:search_name]
+    @products = Product.where("LOWER(name) LIKE ?", "%#{search_term}").order(params[:sort_by])
     render "index.json.jbuilder"
   end
 
@@ -17,7 +20,7 @@ class Api::ProductsController < ApplicationController
       image_url: params[:input_image_url],
       description: params[:input_description]
     )
-    @product1.save
+    @product1.save!
     render "show.json.jbuilder"
    end 
 
